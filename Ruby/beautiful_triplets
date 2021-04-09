@@ -1,0 +1,25 @@
+# https://www.hackerrank.com/challenges/beautiful-triplets/problem
+
+def beautifulTriplets(d, arr)#count = 0, i = 0, j = 1, k = 2)
+  beautiful_triplets = 0
+    
+  arr.each_with_index do |int_one, i|
+    break if i > arr.size - 3
+    
+    arr[i + 1...arr.size].each_with_index do |int_two, j|
+      next if int_two - int_one < d
+      
+      break if int_two - int_one > d || j == arr.size - 1
+      
+      arr[j + 1...arr.size].each do |int_three|
+        next if int_three - int_two < d
+          
+        break if int_three - int_two > d
+        
+        beautiful_triplets += 1
+      end
+    end
+  end
+  
+  beautiful_triplets
+end
